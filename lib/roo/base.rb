@@ -726,7 +726,7 @@ class Roo::Base
         begin
           wdays = ["日", "月", "火", "水", "木", "金", "土"]
           date  = Date.parse(onecell.to_s)
-          date.strptime(date.to_s, "%1m/%1d(#{wdays[date.wday]})")
+          date.strftime("%1m/%1d(#{wdays[date.wday]})")
         rescue
           onecell.to_s
         end
