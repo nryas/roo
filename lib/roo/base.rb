@@ -4,7 +4,7 @@ require 'tmpdir'
 require 'stringio'
 require 'nokogiri'
 require 'roo/utils'
-require 'parsedate'
+require 'date'
 
 # Base class for all other types of spreadsheets
 class Roo::Base
@@ -725,7 +725,7 @@ class Roo::Base
       when Date
         begin
           wdays = ["日", "月", "火", "水", "木", "金", "土"]
-          date  = ParseDate::parsedate(onecell.to_s)
+          date  = Date.parse(onecell.to_s)
           date.strptime(date.to_s, "%1m/%1d(#{wdays[date.wday]})")
         rescue
           onecell.to_s
